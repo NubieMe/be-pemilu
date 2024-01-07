@@ -12,7 +12,7 @@ How to use authorization
 - URL: http://localhost:5000/api/v1/register
 - Method: ``POST``
 - Request Body:
-```json
+``` 
 {
     "username": "example",
     "password": "secret",
@@ -27,7 +27,7 @@ IMPORTANT NOTE 1: show 'isAdmin' input in the form just for creating admin accou
 IMPORTANT NOTE 2: only Admin account that can CUD Articles, Parties and Paslons 
 
 - Response Body:
-```json
+``` 
 {
     message: "Account created successfully!",
     user: "example",
@@ -39,7 +39,7 @@ note: you will received token which is necessary for authorization
 - URL: http://localhost:5000/api/v1/login
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 {
     "username": "example",
     "password": "secret",
@@ -59,12 +59,12 @@ note: you will received token which is necessary for authorization
 - URL: http://localhost:5000/api/v1/logout
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 inH3reY0uG0nN4g3ty0uRto|<3n,5oy0uw1lL4uT0m4t1c4lLyL0gG3d1n
 ```
 note: this response is a token that's gonna expired at the time you received it
@@ -73,12 +73,12 @@ note: this response is a token that's gonna expired at the time you received it
 - URL: http://localhost:5000/api/v1/user
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 [
     {
         "id": 1,
@@ -111,12 +111,12 @@ note: this will show you all user data without 'username', 'password' and 'isAdm
     for example: ``http://localhost:5000/api/v1/user/1``
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 there's no need request body, but you need to change the params
 ```
 
 - Response Body:
-```json
+``` 
 {
     "id": 1,
     "username": "example",
@@ -142,7 +142,7 @@ note: this will show you a user data without 'password'
     for example: ``http://localhost:5000/api/v1/user/1``
 - Method: ``PATCH``
 - Request Body:
-```json
+``` 
 {
     "username": "example",
     "password": "secret",
@@ -155,7 +155,7 @@ note: this will show you a user data without 'password'
 note: you can update a few or entire data if needed
 
 - Response Body:
-```json
+``` 
 {
     message: "Account updated successfully!",
     user: "example"
@@ -170,13 +170,13 @@ note: you can update a few or entire data if needed
     for example: ``http://localhost:5000/api/v1/user/1``
 - Method: ``DELETE``
 - Request Body:
-```json
+``` 
 there's no need request body, but you need to change the params
 ```
 note: you need to login first before delete the account
 
 - Response Body:
-```json
+``` 
 {
     message: "Account deleted successfully!"
 }
@@ -186,7 +186,7 @@ note: you need to login first before delete the account
 - URL: http://localhost:5000/api/v1/vote
 - Method: ``PATCH``
 - Request Body:
-```json
+``` 
 {
     "paslon": 1
 }
@@ -194,7 +194,7 @@ note: you need to login first before delete the account
 note: you can only vote once, and it can't be edited
 
 - Response Body:
-```json
+``` 
 {
     message: "Voting success!",
     voted: 1
@@ -204,11 +204,11 @@ note: you can only vote once, and it can't be edited
 - URL: http://localhost:5000/api/v1/vote/result
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 - Response Body:
-```json
+``` 
 {
     message: "Vote Result",
     data: [
@@ -225,7 +225,7 @@ note: it shows based on how many paslon that are registered. the number '20' and
 - URL: http://localhost:5000/api/v1/article
 - Method: ``POST``
 - Request Body:
-```json
+``` 
 {
     "title": "article1",
     "description": "blablablablabla",
@@ -234,7 +234,7 @@ note: it shows based on how many paslon that are registered. the number '20' and
 ```
 IMPORTANT NOTE: only Admin account that can Create Article
 - Response Body:
-```json
+``` 
 {
     message: "Article Created Successfully!",
     data: {
@@ -251,12 +251,12 @@ IMPORTANT NOTE: only Admin account that can Create Article
 - URL: http://localhost:5000/api/v1/article
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 [
     {
         "id": 1,
@@ -282,12 +282,12 @@ note: shows all Article without 'description' and 'author'
     for example: ``http://localhost:5000/api/v1/article/1``
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 {
     "id": 1,
     "title": "article1",
@@ -308,7 +308,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/article/1``
 - Method: ``PATCH``
 - Request Body:
-```json
+``` 
 {
     "title": "article",
     "description": "blablablablabla",
@@ -318,7 +318,7 @@ for this, you don't need any request body
 note: you can update a few or entire data if needed
 
 - Response Body:
-```json
+``` 
 {
     message: "article updated successfully!",
     data: {
@@ -336,11 +336,11 @@ note: you can update a few or entire data if needed
     for example: ``http://localhost:5000/api/v1/article/1``
 - Method: ``DELETE``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 - Response Body:
-```json
+``` 
 {
     message: "article deleted successfully!"
 }
@@ -352,7 +352,7 @@ for this, you don't need any request body
 - URL: http://localhost:5000/api/v1/party
 - Method: ``POST``
 - Request Body:
-```json
+``` 
 {
     "name": "Panas Dalem",
     "leader": "Surya16",
@@ -364,7 +364,7 @@ for this, you don't need any request body
 ```
 IMPORTANT NOTE: only Admin account that can Create Party
 - Response Body:
-```json
+``` 
 {
     message: "Party Created Successfully!",
     data: {
@@ -382,12 +382,12 @@ IMPORTANT NOTE: only Admin account that can Create Party
 - URL: http://localhost:5000/api/v1/party
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 [
     {
         "id": 1,
@@ -417,12 +417,12 @@ note: paslon won't show up here, but in paslon's 'coalition' instead
     for example: ``http://localhost:5000/api/v1/party/1``
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 {
     "id": 1,
     "name": "Panas Dalem",
@@ -440,7 +440,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/party/1``
 - Method: ``PATCH``
 - Request Body:
-```json
+``` 
 {
     "id": 1,
     "name": "Panas Dalem",
@@ -453,7 +453,7 @@ for this, you don't need any request body
 note: you can update a few or entire data if needed
 
 - Response Body:
-```json
+``` 
 {
     message: "article updated successfully!",
     data: {
@@ -474,11 +474,11 @@ note: you can update a few or entire data if needed
     for example: ``http://localhost:5000/api/v1/party/1``
 - Method: ``DELETE``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 - Response Body:
-```json
+``` 
 {
     message: "party deleted successfully!"
 }
@@ -490,7 +490,7 @@ for this, you don't need any request body
 - URL: http://localhost:5000/api/v1/paslon
 - Method: ``POST``
 - Request Body:
-```json
+``` 
 {
     "name": "Senator Armstrong",
     "image": "photo.jpg",
@@ -499,7 +499,7 @@ for this, you don't need any request body
 ```
 IMPORTANT NOTE: only Admin account that can Create Paslon
 - Response Body:
-```json
+``` 
 {
     message: "Paslon Created Successfully!",
     data: {
@@ -516,12 +516,12 @@ IMPORTANT NOTE: only Admin account that can Create Paslon
 - URL: http://localhost:5000/api/v1/paslon
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 [
     {
         "id": 1,
@@ -558,12 +558,12 @@ note: 'coalition' would automatically filled up, after paslon choosen by Party
     for example: ``http://localhost:5000/api/v1/paslon/1``
 - Method: ``GET``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 
 - Response Body:
-```json
+``` 
 {
     "id": 1,
     "name": "Senator Armstrong",
@@ -586,7 +586,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/paslon/1``
 - Method: ``PATCH``
 - Request Body:
-```json
+``` 
 {
     "name": "Senator Armstrong",
     "image": "photo.jpg",
@@ -596,7 +596,7 @@ for this, you don't need any request body
 note: you can update a few or entire data if needed
 
 - Response Body:
-```json
+``` 
 {
     message: "paslon updated successfully!",
     data: {
@@ -615,11 +615,11 @@ note: you can update a few or entire data if needed
     for example: ``http://localhost:5000/api/v1/paslon/1``
 - Method: ``DELETE``
 - Request Body:
-```json
+``` 
 for this, you don't need any request body
 ```
 - Response Body:
-```json
+``` 
 {
     message: "paslon deleted successfully!"
 }
