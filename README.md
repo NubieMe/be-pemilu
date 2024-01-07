@@ -47,7 +47,7 @@ note: you will received token which is necessary for authorization
 ```
 
 - Response Body
-```json
+```
 {
     message: "Login successfully!",
     token: inH3reY0uG0nN4g3ty0uRto|<3n,5oy0uw1lL4uT0m4t1c4lLyL0gG3d1n
