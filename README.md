@@ -12,7 +12,7 @@ How to use authorization
 - URL: http://localhost:5000/api/v1/register
 - Method: ``POST``
 - Request Body:
-``` 
+```json
 {
     "username": "example",
     "password": "secret",
@@ -39,7 +39,7 @@ note: you will received token which is necessary for authorization
 - URL: http://localhost:5000/api/v1/login
 - Method: ``GET``
 - Request Body:
-``` 
+```json
 {
     "username": "example",
     "password": "secret",
@@ -78,7 +78,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 [
     {
         "id": 1,
@@ -116,7 +116,7 @@ there's no need request body, but you need to change the params
 ```
 
 - Response Body:
-``` 
+```json
 {
     "id": 1,
     "username": "example",
@@ -142,7 +142,7 @@ note: this will show you a user data without 'password'
     for example: ``http://localhost:5000/api/v1/user/1``
 - Method: ``PATCH``
 - Request Body:
-``` 
+```json
 {
     "username": "example",
     "password": "secret",
@@ -186,7 +186,7 @@ note: you need to login first before delete the account
 - URL: http://localhost:5000/api/v1/vote
 - Method: ``PATCH``
 - Request Body:
-``` 
+```json
 {
     "paslon": 1
 }
@@ -225,7 +225,7 @@ note: it shows based on how many paslon that are registered. the number '20' and
 - URL: http://localhost:5000/api/v1/article
 - Method: ``POST``
 - Request Body:
-``` 
+```json
 {
     "title": "article1",
     "description": "blablablablabla",
@@ -256,7 +256,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 [
     {
         "id": 1,
@@ -287,7 +287,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 {
     "id": 1,
     "title": "article1",
@@ -308,7 +308,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/article/1``
 - Method: ``PATCH``
 - Request Body:
-``` 
+```json
 {
     "title": "article",
     "description": "blablablablabla",
@@ -352,7 +352,7 @@ for this, you don't need any request body
 - URL: http://localhost:5000/api/v1/party
 - Method: ``POST``
 - Request Body:
-``` 
+```json
 {
     "name": "Panas Dalem",
     "leader": "Surya16",
@@ -387,7 +387,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 [
     {
         "id": 1,
@@ -422,7 +422,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 {
     "id": 1,
     "name": "Panas Dalem",
@@ -440,7 +440,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/party/1``
 - Method: ``PATCH``
 - Request Body:
-``` 
+```json
 {
     "id": 1,
     "name": "Panas Dalem",
@@ -490,7 +490,7 @@ for this, you don't need any request body
 - URL: http://localhost:5000/api/v1/paslon
 - Method: ``POST``
 - Request Body:
-``` 
+```json
 {
     "name": "Senator Armstrong",
     "image": "photo.jpg",
@@ -521,7 +521,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 [
     {
         "id": 1,
@@ -563,7 +563,7 @@ for this, you don't need any request body
 ```
 
 - Response Body:
-``` 
+```json
 {
     "id": 1,
     "name": "Senator Armstrong",
@@ -586,7 +586,7 @@ for this, you don't need any request body
     for example: ``http://localhost:5000/api/v1/paslon/1``
 - Method: ``PATCH``
 - Request Body:
-``` 
+```json
 {
     "name": "Senator Armstrong",
     "image": "photo.jpg",
