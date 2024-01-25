@@ -25,9 +25,16 @@ export default new class UserController {
 
     async login(req:Request, res:Response) {
         try{
-            const result = await UserService.login(req.body)
+            const data = {
+                username: req.query.username,
+                password: req.query.password
+            }
+            const result = await UserService.login(data)
 
-            return res.status(200).json(result) 
+            return res.status(200).cookie("authToken", result.token, {
+                httpOnly: true,
+                maxAge: 7 * 24 * 60 * 60 * 1000
+            }).json(result.message) 
         } catch (error) {
             return res.status(error.status || 500).json(error.message)
         }
@@ -35,8 +42,7 @@ export default new class UserController {
 
     async logout(req:Request, res:Response) {
         try{
-            const result = await UserService.logout()
-            return res.status(200).json(result)
+            return res.status(200).clearCookie("authToken").json({ message: "Logout successfully" })
         } catch (error) {
             return res.status(error.status || 500).json(error.message)
         }

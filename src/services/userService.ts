@@ -32,30 +32,16 @@ export default new class UserService {
         const loginReq = validate(loginUserSchema, data)
         const chkUser = await this.userRepository.findOne({ where: { username: loginReq.username }})
 
-        if(!chkUser) throw new ResponseError(401, "Username or Password is incorrect!")
+        if(!chkUser) throw new ResponseError(401, "Username not registered yet")
 
         const isValid = await bcrypt.compare(loginReq.password, chkUser.password)
         if(!isValid) throw new ResponseError(401, "Username or Password is incorrect!")
-
-        const user = this.userRepository.create({
-            id: chkUser.id,
-            username: chkUser.username,
-            fullName: chkUser.fullName,
-            address: chkUser.address,
-            gender: chkUser.gender,
-            isAdmin: chkUser.isAdmin
-        })
         
-        const token = jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "7d" })
+        const token = jwt.sign({ id: chkUser.id, username: chkUser.username, isAdmin: chkUser.isAdmin }, process.env.SECRET_KEY, { expiresIn: "7d" })
         return ({
             message: "Login successfully!",
             token: token
         })
-    }
-
-    async logout() {
-        const user = { session: "destroy" }
-        return jwt.sign({ user }, "destroy", { expiresIn: 0 } )
     }
     
     async register(data) {
@@ -75,7 +61,9 @@ export default new class UserService {
             isAdmin: isValid.isAdmin
         })
 
-        const token = jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "7d" })
+        const get = await this.userRepository.findOne({ where: { username: isValid.username }})
+
+        const token = jwt.sign({ id: get.id, username: get.username, isAdmin: get.isAdmin }, process.env.SECRET_KEY, { expiresIn: "7d" })
         return ({
             message: "Account created successfully",
             user: isValid.username,
