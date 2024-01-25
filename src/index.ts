@@ -7,11 +7,9 @@ import * as cors from "cors"
 AppDataSource.initialize().then(async () => {
     const app = express()
 
+    app.use(cors({ credentials: true, origin: "http://localhost:5173", methods: "GET, POST, PATCH, DELETE" }))
     app.use(express.json())
     app.use("/api/v1", routes)
-    app.use(cors({origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PATCH", "DELETE"],
-    credentials: true }))
 
     app.listen(process.env.PORT, () => console.log(`Server is running!`))
 
