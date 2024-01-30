@@ -1,21 +1,22 @@
-import { NextFunction, Request, Response } from "express"
-import * as jwt from "jsonwebtoken"
+import { NextFunction, Request, Response } from "express";
+import * as jwt from "jsonwebtoken";
 
-export default new class AuthMiddleware {
-    auth(req:Request, res:Response, next:NextFunction) {
-        const authHeader = req.headers.authorization
+export default new (class AuthMiddleware {
+    auth(req: Request, res: Response, next: NextFunction) {
+        const authHeader = req.headers.cookie;
 
-        if(!authHeader || !authHeader.startsWith("Bearer")) return res.status(401).json({ message: "unauthorized" })
-        
-        const token = authHeader.split(" ")[1]
+        if (!authHeader || !authHeader.startsWith("T.id"))
+            return res.status(403).json({ message: "Please login first!" });
 
-        try {  
-            const verif = jwt.verify(token, process.env.SECRET_KEY)
-            res.locals.session = verif
+        const token = authHeader.split("=")[1];
 
-            next()
+        try {
+            const verif = jwt.verify(token, process.env.SECRET_KEY);
+            res.locals.session = verif;
+
+            next();
         } catch (error) {
-            return res.status(401).json({ message: "Token is not valid" })            
+            return res.status(401).json({ message: "Token is not valid" });
         }
     }
-}
+})();
