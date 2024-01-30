@@ -7,7 +7,7 @@ import UserController from "../controllers/userController";
 import UploadImage from "../middleware/uploadFile";
 import AuthMiddleware from "../middleware/auth";
 import AuthController from "../controllers/authController";
-import VoteController from "../controllers/VoteController";
+import VoteController from "../controllers/voteController";
 
 const routes = express.Router();
 const upload = multer();
@@ -45,7 +45,7 @@ routes.get("/logout", AuthController.logout);
 routes.get("/login", upload.none(), AuthController.login);
 routes.post("/register", upload.none(), AuthController.register);
 
-//Vote & Result
+//Vote & Result API
 routes.patch("/vote", upload.none(), AuthMiddleware.auth, VoteController.vote);
 routes.get("/vote/result", VoteController.results);
 
